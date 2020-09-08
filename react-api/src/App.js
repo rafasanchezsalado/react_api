@@ -1,8 +1,7 @@
 import React from "react";
 // import logo from "./logo.svg";
 import "./App.css";
-import Questions from './components/questions'
-// import Choices from './components/choices'
+import Questions from "./components/questions";
 
 /* 
 function App() {
@@ -19,27 +18,25 @@ function App() {
 } 
 */
 
-var link = "http://localhost:8000/api/questions/";
+var linkQuestions = "http://localhost:8000/api/questions/";
 var init = {
-  headers: 
-  {
-  'Content-Type': 'application/json', 
-  'Accept': 'application/json'
-  }
-}
+  headers: {
+    "Content-Type": "application/json",
+    Accept: "application/json",
+  },
+};
 
 class App extends React.Component {
-
+  
   state = {
     questions: [],
-    // choices: [],
   };
 
   componentDidMount() {
-    fetch(link, init)
-    .then((res) => res.json())
-    .then((json) => {
-        this.setState({ 
+    fetch(linkQuestions, init)
+      .then((res) => res.json())
+      .then((json) => {
+        this.setState({
           questions: json,
         });
       })
@@ -47,10 +44,7 @@ class App extends React.Component {
   }
 
   render() {
-    return (
-      <Questions questions={this.state.questions} />
-      // <Choices choices={this.state.choices}></Choices>
-    );
+    return <Questions questions={this.state.questions}></Questions>;
   }
 }
 
